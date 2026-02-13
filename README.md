@@ -19,6 +19,5 @@ This repo contains:
 
 ## 📌 How to Experience It
 
-1. **Clone this repository**
-   ```bash
-   git clone https://github.com/sensei-0z/yousra_amar_jaan.git
+ **Just download zip file, export it and open the .html file**
+  
