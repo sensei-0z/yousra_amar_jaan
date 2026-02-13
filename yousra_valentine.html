@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For Yousra ❤️</title>
+
+<!-- Romantic Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(-45deg, #ff758c, #ff7eb3, #ffb199, #ff0844);
+    background-size: 400% 400%;
+    animation: gradient 12s ease infinite;
+    font-family: 'Playfair Display', serif;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+h1 {
+    margin-top: 80px;
+    font-size: 4em;
+    font-family: 'Great Vibes', cursive;
+    text-shadow: 0 0 25px rgba(255,255,255,0.9);
+}
+
+#typewriter {
+    font-size: 1.8em;
+    width: 70%;
+    margin: 30px auto;
+    min-height: 100px;
+}
+
+button {
+    padding: 15px 35px;
+    font-size: 18px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 15px;
+    transition: 0.3s;
+    font-family: 'Playfair Display', serif;
+}
+
+#startBtn {
+    background: white;
+    color: #ff4d88;
+}
+
+#yesBtn {
+    background: #ff4d88;
+    color: white;
+    display: none;
+}
+
+#noBtn {
+    background: white;
+    color: #ff4d88;
+    position: absolute;
+    display: none;
+}
+
+#finalMessage {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8em;
+    margin-top: 150px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+    <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+<h1>Yousra ❤️</h1>
+
+<div id="typewriter"></div>
+
+<button id="startBtn" onclick="start()">Open My Heart 💌</button>
+<button id="yesBtn" onclick="yesAnswer()">Yes 💕</button>
+<button id="noBtn">No 😢</button>
+
+<script>
+
+const text = "From the moment I met you, my world became softer, brighter, and more beautiful... 💖 Yousra, will you be my Valentine forever? 🌹";
+let i = 0;
+
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typewriter").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+    }
+}
+
+function start() {
+    document.getElementById("startBtn").style.display = "none";
+    document.getElementById("yesBtn").style.display = "inline-block";
+    document.getElementById("noBtn").style.display = "inline-block";
+    document.getElementById("bgMusic").play().catch(()=>{});
+    typeWriter();
+}
+
+function yesAnswer() {
+
+    document.getElementById("yesBtn").style.display = "none";
+    document.getElementById("noBtn").style.display = "none";
+    document.getElementById("typewriter").style.display = "none";
+
+    const final = document.createElement("div");
+    final.id = "finalMessage";
+    final.innerHTML = `
+        💖 Yousra 💖<br><br>
+        You are my happiness.<br>
+        My peace.<br>
+        My favorite person.<br><br>
+        I promise to love you endlessly. 🌸❤️
+    `;
+
+    document.body.appendChild(final);
+    launchHearts();
+}
+
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", function() {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => { heart.remove(); }, 6000);
+}
+
+function launchHearts() {
+    setInterval(createHeart, 200);
+}
+
+setInterval(createHeart, 400);
+
+</script>
+
+</body>
+</html>
